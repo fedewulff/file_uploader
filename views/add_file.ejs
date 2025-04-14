@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs",{title:"Add file"}) %>
+  <body>
+    <form class="addFileForm" action="/add_file/:id" method="post">
+      <div>
+        <label for="fileName">File name:</label>
+        <input type="text" name="fileName" id="fileName" required />
+      </div>
+      <div>
+        <label for="file">File:</label>
+        <input type="file" name="file" id="file" required />
+      </div>
+      <button class="addFileButton" type="submit">Add file</button>
+    </form>
+  </body>
+</html>

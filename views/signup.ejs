@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs",{title:"Sign up"}) %>
+  <body>
+    <h2 class="title">Sign Up</h2>
+    <div class="formContainer">
+      <form action="/signup" method="post">
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" name="username" id="username" required />
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" minlength="8" required />
+        </div>
+        <div>
+          <label for="confirmPassword">Confirm password:</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            minlength="8"
+            required
+          />
+        </div>
+        <%- include("./partials/formError.ejs") %>
+        <button class="signupButton" type="submit">Sign up</button>
+      </form>
+      <a href="/">Home</a>
+    </div>
+  </body>
+</html>
