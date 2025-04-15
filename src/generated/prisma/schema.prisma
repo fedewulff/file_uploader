@@ -36,9 +36,9 @@ model File {
   createdAt DateTime @default(now())
   file      String
   user      User     @relation(fields: [userId], references: [id])
-  userId    Int      @unique
+  userId    Int
   folder    Folder?  @relation(fields: [folderId], references: [id])
-  folderId  Int?     @unique
+  folderId  Int?
 }
 
 model Session {

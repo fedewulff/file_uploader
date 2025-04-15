@@ -4,20 +4,24 @@ exports.addFileGet = (req, res) => {
   if (!req.user) {
     res.redirect("/");
   }
-  res.render("add_file", { user: req.user });
+
+  const folderId = req.params.folderId;
+  console.log(req.params.folderId);
+  res.render("add_file", { user: req.user, folderId: folderId });
 };
 
 exports.addFilePost = async (req, res) => {
-  const { fileName } = req.body;
+  const { fileName, file } = req.body;
   const { id } = req.user;
   const folder = req.params.folderId || null;
-  await prisma.file.create({
-    data: {
-      name: fileName,
-      file: "test",
-      userId: id,
-      folderId: folder,
-    },
-  });
-  res.redirect("/user/:folderId?/file");
+  console.log(req.params);
+  // await prisma.file.create({
+  //   data: {
+  //     name: fileName,
+  //     file: file,
+  //     userId: id,
+  //     folderId: folder,
+  //   },
+  // });
+  res.redirect("/user");
 };

@@ -5,9 +5,9 @@
     <h2 class="userTitle"><%= user.username %></h2>
     <div class="userFullContainer">
       <div class="userSidebar">
-        <a href="add_folder" class="addFolferAndFile">Add folder</a>
+        <a href="/add_folder" class="addFolderAndFile">Add folder</a>
 
-        <a href="/add_file" class="addFolferAndFile">Add file</a>
+        <a href="/add_file" class="addFolderAndFile">Add file</a>
       </div>
       <a href="/logout" class="logout">LOG OUT</a>
 
@@ -20,20 +20,19 @@
               d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z"
             />
           </svg>
-          <div class="folderName"><%= folders[i].name %></div>
+          <div class="folderFileName"><%= folders[i].name %></div>
         </a>
 
         <% } %> <% } if(files) {for( let i = 0; i < files.length; i++ ) { %>
-        <a href="">
-          <div class="gridBlock file">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <title>file-document-outline</title>
-              <path
-                d="M6,2A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6M6,4H13V9H18V20H6V4M8,12V14H16V12H8M8,16V18H13V16H8Z"
-              />
-            </svg>
-            <div><%= files[i].name %></div>
-          </div>
+        <a class="gridBlock file" href="">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>file-document-outline</title>
+            <path
+              d="M6,2A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6M6,4H13V9H18V20H6V4M8,12V14H16V12H8M8,16V18H13V16H8Z"
+            />
+          </svg>
+          <div class="folderFileName"><%= files[i].name %></div>
+          <div class="folderFileName"><%= files[i].file %></div>
         </a>
         <% } %> <% } %>
       </div>

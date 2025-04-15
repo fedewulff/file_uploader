@@ -4,5 +4,6 @@ exports.folderProfileGet = async (req, res) => {
   if (!req.user) {
     res.redirect("/");
   }
-  res.render("folder", { files: [] });
+  const folderId = req.params.folderId;
+  res.render("folder", { folderId: folderId, files: [] });
 };

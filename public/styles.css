@@ -96,7 +96,8 @@ input {
   height: 6rem;
 }
 
-.userFullContainer {
+.userFullContainer,
+.folderContainer {
   display: flex;
   gap: 1.5rem;
 }
@@ -117,6 +118,10 @@ input {
   text-decoration: none;
   white-space: nowrap;
   font-size: 1.5rem;
+  font-weight: 600;
+}
+.logout:hover {
+  color: #ff6600;
 }
 
 .userSidebar a,
@@ -131,13 +136,21 @@ input {
   padding: 0.5rem 0.75rem;
 }
 
+.userSidebar a:hover,
+.userSidebar div:hover {
+  background: #ff6600;
+}
+
 .grid {
   width: 100%;
   border-top: 0.25rem solid #fffff4;
   border-left: 0.25rem solid #fffff4;
   border-top-left-radius: 1.5rem;
   padding: 1.5rem;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-content: start;
 }
 
 .grid a {
@@ -145,34 +158,34 @@ input {
 }
 
 .gridBlock {
-  width: 15rem;
-  height: 5rem;
   cursor: pointer;
   border-radius: 1rem;
   display: flex;
+  height: fit-content;
   align-items: center;
-}
-
-.folder {
+  justify-content: space-around;
+  overflow: hidden;
+  max-width: 22rem;
   border: 0.25rem solid #fffff4;
 }
-.folderName {
+.gridBlock:hover {
+  background: #ff6600;
+}
+
+.folderFileName {
   margin-left: 0.25rem;
   font-size: 1.5rem;
   color: #fffff4;
-}
-
-.file {
-  border: 0.25rem solid #fffff4;
+  align-self: start;
+  width: 80%;
+  padding: 0.5rem 0.5rem 0.5rem 0;
 }
 
 svg {
   fill: white;
-  height: 90%;
-}
-
-.gridBlock:hover {
-  background: #ff9100;
+  height: 5rem;
+  flex-shrink: 0;
+  padding: 0;
 }
 
 /*ADD FILE OR FOLDER*/

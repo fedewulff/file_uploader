@@ -21,10 +21,10 @@ main_route.get("/user", user_con.userGet);
 main_route.get("/add_folder", add_folder_con.addFolderGet);
 main_route.post("/add_folder", add_folder_con.addFolderPost);
 //ADD FILE
-main_route.get("/add_file", add_file_con.addFileGet);
-main_route.post("/add_file", add_file_con.addFilePost);
+main_route.get("/add_file/{:folderId}", add_file_con.addFileGet);
+main_route.post("/add_file/{:folderId}", add_file_con.addFilePost);
 //FOLDER PROFILE
-main_route.get("/folder/:id", folder_data_con.folderProfileGet);
+main_route.get("/folder/:folderId", folder_data_con.folderProfileGet);
 //LOG OUT
 main_route.get("/logout", (req, res, next) => {
   req.logout((err) => {

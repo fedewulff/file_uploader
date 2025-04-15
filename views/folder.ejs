@@ -2,15 +2,12 @@
 <html lang="en">
   <%- include("./partials/head.ejs",{title:"Folder"}) %>
   <body>
+    <h2 class="userTitle">Folder</h2>
     <div class="folderContainer">
       <div class="userSidebar">
-        <div>
-          <h2 class="userTitle title">Folder</h2>
-
-          <a href="/user/add_file">Add file</a>
-        </div>
-        <a href="/logout" class="logout">LOG OUT</a>
+        <a href="/add_file/<%= folderId %>" class="addFolferAndFile">Add file</a>
       </div>
+      <a href="/logout" class="logout">LOG OUT</a>
 
       <div class="grid">
         <% if(files) {for( let i = 0; i < files.length; i++ ) { %>
