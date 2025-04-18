@@ -12,7 +12,9 @@ exports.userGet = async (req, res) => {
   const files = await prisma.file.findMany({
     where: {
       userId: req.user.id,
+      folderId: null,
     },
   });
+
   res.render("user", { user: req.user, folders: folders, files: files });
 };

@@ -2,27 +2,50 @@
 <html lang="en">
   <%- include("./partials/head.ejs",{title:"Folder"}) %>
   <body>
-    <h2 class="userTitle">Folder</h2>
+    <div class="folderTitleAndButtons">
+      <h2 class="folderName"><%= folder[0].name %></h2>
+      <div class="updateAndDeleteButtons">
+        <a href="/folder/<%= folderId %>/update" class="updateFolderButton">Update folder</a>
+        <form
+          action="/folder/<%= folderId %>/delete"
+          method="post"
+          style="display: inline"
+          class="deleteFolderForm"
+        >
+          <button
+            type="submit"
+            onclick="return confirm('Delete this folder?');"
+            class="deleteFolderButton"
+          >
+            Delete folder
+          </button>
+        </form>
+      </div>
+    </div>
     <div class="folderContainer">
       <div class="userSidebar">
         <a href="/add_file/<%= folderId %>" class="addFolferAndFile">Add file</a>
+        <a href="/user" class="addFolferAndFile">Back</a>
       </div>
       <a href="/logout" class="logout">LOG OUT</a>
 
       <div class="grid">
-        <% if(files) {for( let i = 0; i < files.length; i++ ) { %>
-        <a href="">
-          <div class="gridBlock file">
+        <% if(files[0]) {%>
+        <h3 class="folderFileTitle">Files</h3>
+        <div class="folderFileContainer">
+          <%for( let i = 0; i < files.length; i++ ) { %>
+          <a href="/file/<%= files[i].id %>" class="gridBlock file">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <title>file-document-outline</title>
               <path
                 d="M6,2A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6M6,4H13V9H18V20H6V4M8,12V14H16V12H8M8,16V18H13V16H8Z"
               />
             </svg>
-            <div><%= files[i].name %></div>
-          </div>
-        </a>
-        <% } } %>
+            <div class="folderFileName"><%= files[i].file %></div>
+          </a>
+          <% }%>
+        </div>
+        <% } %>
       </div>
     </div>
   </body>

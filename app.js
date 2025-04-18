@@ -6,7 +6,8 @@ require("dotenv").config();
 const passport = require("passport");
 const expressSession = require("express-session");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
-const { PrismaClient } = require("./src/generated/prisma");
+
+const prisma = require("./db/queries");
 
 const path = require("node:path");
 const assetsPath = path.join(__dirname, "public");
@@ -22,7 +23,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: new PrismaSessionStore(new PrismaClient(), {
+    store: new PrismaSessionStore(prisma, {
       checkPeriod: 2 * 60 * 1000, //ms
       dbRecordIdIsSessionId: true,
       dbRecordIdFunction: undefined,
@@ -36,7 +37,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", mainRoute);
 
 app.use((err, req, res, next) => {
-  console.error(err);
+  console.error("err", err);
+  console.error("message", err.message);
   res.status(err.statusCode || 500).send(err.message || "Internal server error");
 });
 

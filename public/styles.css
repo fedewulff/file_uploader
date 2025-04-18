@@ -61,7 +61,8 @@ form div {
   gap: 0.25rem;
 }
 .error {
-  color: #fffff4;
+  list-style-type: none;
+  color: #ff6600;
 }
 
 label {
@@ -90,10 +91,28 @@ input {
 }
 
 /*USER*/
+
+.deleteUserForm {
+  border: none;
+  padding: 0;
+  margin: 0 0.5rem 0.5rem 0;
+}
 .userTitle {
   font-size: 4rem;
   color: #fffff4;
-  height: 6rem;
+  min-height: 6rem;
+}
+.deleteUserForm button {
+  background: #fffff4;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.5rem;
+  color: #004225;
+  cursor: pointer;
+}
+.deleteUserForm button:hover {
+  background: #ff6600;
 }
 
 .userFullContainer,
@@ -102,16 +121,8 @@ input {
   gap: 1.5rem;
 }
 
-.userSidebar {
-  display: flex;
-  flex-direction: column;
-  height: calc(100svh - 6rem);
-  justify-content: start;
-  gap: 0.5rem;
-  max-width: fit-content;
-}
 .logout {
-  position: absolute;
+  position: fixed;
   bottom: 0.5rem;
   left: 0.5rem;
   color: #fffff4;
@@ -120,25 +131,9 @@ input {
   font-size: 1.5rem;
   font-weight: 600;
 }
-.logout:hover {
+
+.loginButton:hover {
   color: #ff6600;
-}
-
-.userSidebar a,
-.userSidebar div {
-  color: #004225;
-  background: #fffff4;
-  text-decoration: none;
-  border-radius: 1rem;
-  padding: 0.25rem;
-  white-space: nowrap;
-  font-size: 1.5rem;
-  padding: 0.5rem 0.75rem;
-}
-
-.userSidebar a:hover,
-.userSidebar div:hover {
-  background: #ff6600;
 }
 
 .grid {
@@ -147,6 +142,15 @@ input {
   border-left: 0.25rem solid #fffff4;
   border-top-left-radius: 1.5rem;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.folderFileTitle {
+  color: #fffff4;
+  font-size: 2.5rem;
+}
+.folderFileContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -166,10 +170,13 @@ input {
   justify-content: space-around;
   overflow: hidden;
   max-width: 22rem;
-  border: 0.25rem solid #fffff4;
+  border: 0.125rem solid #fffff4;
 }
 .gridBlock:hover {
   background: #ff6600;
+}
+.file {
+  border: 0.125rem solid #fffff4;
 }
 
 .folderFileName {
@@ -204,4 +211,112 @@ svg {
   color: #fffff4;
   display: block;
   font-size: 2rem;
+}
+
+/*FOLDER DATA*/
+.folderTitleAndButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.folderName {
+  font-size: 4rem;
+  color: #fffff4;
+  min-height: 6rem;
+}
+.updateAndDeleteButtons {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+}
+.updateFolderButton {
+  text-decoration: none;
+  color: #004225;
+  margin: 0 0.5rem 0.5rem 0;
+}
+.deleteFolderForm {
+  border: none;
+  padding: 0;
+  margin: 0 0.5rem 0.5rem 0;
+}
+.deleteFolderForm button,
+.updateFolderButton {
+  background: #fffff4;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.5rem;
+  color: #004225;
+  cursor: pointer;
+}
+.deleteFolderForm button:hover,
+.updateFolderButton:hover {
+  background: #ff6600;
+}
+.logout:hover {
+  color: #ff6600;
+}
+
+/*FILE DATA*/
+.fileContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  margin: 5rem auto;
+  gap: 3rem;
+}
+.fileData {
+  border: 0.25rem solid #fffff4;
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  color: #fffff4;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.deleteFileForm {
+  border: none;
+  padding: 0;
+  margin: auto;
+}
+.deleteFileForm button {
+  border: 0.25rem solid #fffff4;
+  border-radius: 1.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+  color: #004225;
+  cursor: pointer;
+  margin: auto;
+}
+
+/*SIDEBAR*/
+.userSidebar {
+  display: flex;
+  flex-direction: column;
+  height: calc(100svh - 6rem);
+  justify-content: start;
+  gap: 0.5rem;
+  max-width: fit-content;
+}
+
+.userSidebar a,
+.userSidebar div {
+  color: #004225;
+  background: #fffff4;
+  text-decoration: none;
+  border-radius: 1rem;
+  padding: 0.25rem;
+  white-space: nowrap;
+  font-size: 1.5rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.userSidebar a:hover,
+.userSidebar div:hover,
+.signupButton:hover,
+.signUpHomeButton:hover {
+  background: #ff6600;
 }

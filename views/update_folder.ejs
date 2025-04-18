@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs",{title:"Add folder"}) %>
+  <body>
+    <form action="/folder/<%= folderId %>/update" method="post" class="addFolderForm">
+      <div>
+        <label for="folderName">Folder name:</label>
+        <input
+          type="text"
+          name="folderName"
+          id="folderName"
+          placeholder="<%= placeholder %>"
+          required
+        />
+      </div>
+      <button class="addFolderButton" type="submit">Update</button>
+    </form>
+  </body>
+</html>

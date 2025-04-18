@@ -2,11 +2,12 @@
 <html lang="en">
   <%- include("./partials/head.ejs",{title:"Add file"}) %>
   <body>
-    <form class="addFileForm" action="/add_file/{:folderId}" method="post">
-      <div>
-        <label for="fileName">File name:</label>
-        <input type="text" name="fileName" id="fileName" required />
-      </div>
+    <form
+      class="addFileForm"
+      action="/add_file/<%= folderId %>"
+      method="post"
+      enctype="multipart/form-data"
+    >
       <div>
         <label for="file">File:</label>
         <input type="file" name="file" id="file" required />

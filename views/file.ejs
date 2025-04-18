@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs",{title:"File"}) %>
+  <body>
+    <div class="fileContainer">
+      <div class="fileData">
+        <div><%= file[0].file %></div>
+        <div><%= file[0].createdAt %></div>
+      </div>
+      <form
+        action="/file/<%= file[0].id %>/delete"
+        method="post"
+        style="display: inline"
+        class="deleteFileForm"
+      >
+        <button type="submit" onclick="return confirm('Delete this file?');">Delete file</button>
+      </form>
+    </div>
+  </body>
+</html>
