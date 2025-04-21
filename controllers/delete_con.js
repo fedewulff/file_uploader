@@ -1,5 +1,7 @@
 const prisma = require("../db/queries");
+const cloudinary = require("cloudinary").v2;
 
+//DELETE USER
 exports.deleteUserPost = async (req, res) => {
   await prisma.user.delete({
     where: {
@@ -9,9 +11,16 @@ exports.deleteUserPost = async (req, res) => {
   res.redirect("/");
 };
 
+//DELETE FOLDER
 exports.deleteFolderPost = async (req, res) => {
-  console.log("delete", req.params.folderId);
-  console.log(req.params);
+  const folderFiles = await prisma.file.findMany({
+    where: {
+      folderId: Number(req.params.folderId),
+    },
+  });
+  for (let i = 0; i < folderFiles.length; i++) {
+    cloudinary.uploader.destroy(folderFiles[i].name).then((result) => console.log(result));
+  }
   await prisma.folder.delete({
     where: {
       id: Number(req.params.folderId),
@@ -20,12 +29,13 @@ exports.deleteFolderPost = async (req, res) => {
   res.redirect("/user");
 };
 
+//DELETE FILE
 exports.deleteFilePost = async (req, res) => {
-  console.log("delete", req.params.fileId);
-  await prisma.file.delete({
+  const deleteFile = await prisma.file.delete({
     where: {
       id: Number(req.params.fileId),
     },
   });
+  cloudinary.uploader.destroy(deleteFile.name).then((result) => console.log(result));
   res.redirect("/user");
 };

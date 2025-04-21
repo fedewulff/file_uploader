@@ -15,6 +15,5 @@ exports.userGet = async (req, res) => {
       folderId: null,
     },
   });
-
   res.render("user", { user: req.user, folders: folders, files: files });
 };

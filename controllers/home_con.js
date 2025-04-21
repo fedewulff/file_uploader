@@ -3,5 +3,9 @@ exports.homeGet = async (req, res) => {
     res.redirect("/user");
     return;
   }
-  res.render("home");
+  console.log(req.session.messages);
+  const loginErrorMessage = req.session.messages;
+  res.render("home", { error: loginErrorMessage });
+
+  req.session.destroy();
 };

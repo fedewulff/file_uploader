@@ -10,29 +10,31 @@ const folder_data_con = require("../controllers/folder_data_con");
 const file_data_con = require("../controllers/file_data_con");
 const delete_con = require("../controllers/delete_con");
 const update_con = require("../controllers/update_con");
-const multer = require("multer");
+const passport = require("passport");
+require("../authentication");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./uploads");
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, uniqueSuffix + "-" + file.originalname);
-  },
-});
-
-const upload = multer({ storage: storage });
-
-console.log(__dirname);
-console.log(__filename);
 //HOME
 main_route.get("/", home_con.homeGet);
 //SIGN UP
 main_route.get("/signup", signup_con.signupGet);
 main_route.post("/signup", signup_con.signupPost);
 //LOG IN
-main_route.post("/login", login_con.logInPost);
+// main_route.post(
+//   "/login",
+//   passport.authenticate("local", {
+//     successRedirect: "/user",
+//     failureRedirect: "/",
+//     failureFlash: true,
+//   })
+// );
+main_route.post(
+  "/login",
+  passport.authenticate("local", { failureRedirect: "/", failureMessage: true }),
+  function (req, res) {
+    res.redirect("/user");
+  }
+);
+
 //USER
 main_route.get("/user", user_con.userGet);
 //ADD FOLDER
@@ -40,7 +42,11 @@ main_route.get("/add_folder", add_folder_con.addFolderGet);
 main_route.post("/add_folder", add_folder_con.addFolderPost);
 //ADD FILE
 main_route.get("/add_file{/:folderId}", add_file_con.addFileGet);
-main_route.post("/add_file{/:folderId}", upload.single("file"), add_file_con.addFilePost);
+main_route.post(
+  "/add_file{/:folderId}",
+  add_file_con.upload.single("file"),
+  add_file_con.addFilePost
+);
 //FOLDER PROFILE
 main_route.get("/folder/:folderId", folder_data_con.folderProfileGet);
 //FILE PROFILE
@@ -61,6 +67,8 @@ main_route.get("/logout", (req, res, next) => {
     if (err) {
       return next(err);
     }
+    console.log("logout");
+    console.log(req.session);
     res.redirect("/");
   });
 });

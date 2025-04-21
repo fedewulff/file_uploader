@@ -11,12 +11,17 @@ passport.use(
           username: username,
         },
       });
+      console.log("password");
+      console.log(password);
+
       if (!user) {
-        return done(null, false, { message: "Incorrect username" });
+        console.log(1);
+        return done(null, false, { message: "Username does not exist" });
       }
       const match = await bcrypt.compare(password, user.password);
       if (!match) {
-        return done(null, false, { message: "Incorrect password" });
+        console.log(2);
+        return done(null, false, { message: "Wrong password" });
       }
       return done(null, user);
     } catch (err) {
@@ -25,6 +30,7 @@ passport.use(
   })
 );
 passport.serializeUser((user, done) => {
+  delete user.password;
   done(null, user.username);
 });
 

@@ -1,4 +1,5 @@
 const prisma = require("../db/queries");
+const { body, validationResult } = require("express-validator");
 
 exports.addFolderGet = (req, res) => {
   if (!req.user) {
@@ -6,6 +7,10 @@ exports.addFolderGet = (req, res) => {
   }
   res.render("add_folder");
 };
+
+const validateSignUp = [
+  body("folderName").trim().notEmpty().withMessage("Folder name cannot be empty"),
+];
 
 exports.addFolderPost = async (req, res) => {
   const { folderName } = req.body;

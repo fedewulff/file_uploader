@@ -1,10 +1,16 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const mainRoute = require("./routes/main_route");
-require("dotenv").config();
+//require("dotenv").config();
+const cloudinary = require("cloudinary").v2;
 
 const passport = require("passport");
 const expressSession = require("express-session");
+const flash = require("express-flash");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
 
 const prisma = require("./db/queries");
@@ -15,6 +21,7 @@ app.use(express.static(assetsPath));
 
 app.set("view engine", "ejs");
 
+app.use(flash());
 app.use(
   expressSession({
     cookie: {
@@ -30,6 +37,7 @@ app.use(
     }),
   })
 );
+
 app.use(passport.session());
 
 app.use(express.urlencoded({ extended: true }));

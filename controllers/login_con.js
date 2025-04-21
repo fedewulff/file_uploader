@@ -5,7 +5,6 @@ exports.loginGet = async (req, res) => {
   res.render("login");
 };
 
-exports.logInPost = passport.authenticate("local", {
-  successRedirect: "/user",
-  failureRedirect: "/",
-});
+exports.logInPost = (req, res) => {
+  res.redirect("user");
+};

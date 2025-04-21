@@ -7,14 +7,18 @@
       <form action="/login" method="post">
         <div>
           <label for="username">Username:</label>
-          <input type="text" name="username" id="username" />
+          <input type="text" name="username" id="username" required />
         </div>
         <div>
           <label for="password">Password:</label>
-          <input type="password" name="password" id="password" />
+          <input type="password" name="password" id="password" required />
         </div>
+
         <button class="loginButton" type="submit">Log in</button>
       </form>
+      <% if(error) { %>
+      <div class="error"><%= error %></div>
+      <% } %>
       <div class="or">or</div>
       <a href="/signup" class="signUpHomeButton">Sign up</a>
     </div>
