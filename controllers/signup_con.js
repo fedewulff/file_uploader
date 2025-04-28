@@ -26,15 +26,12 @@ const validateSignUp = [
         throw new Error("Username already in use");
       }
     }),
-
-  ,
   body("password")
     .trim()
     .notEmpty()
     .withMessage(`Password cannot be empty`)
     .isLength({ min: 8 })
     .withMessage(`Password has to be at least 8 characters long`),
-
   body("confirmPassword")
     .trim()
     .notEmpty()

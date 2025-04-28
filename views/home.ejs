@@ -16,8 +16,8 @@
 
         <button class="loginButton" type="submit">Log in</button>
       </form>
-      <% if(error) { %>
-      <div class="error"><%= error %></div>
+      <% if(messages) { %>
+      <div class="error"><%= messages %></div>
       <% } %>
       <div class="or">or</div>
       <a href="/signup" class="signUpHomeButton">Sign up</a>

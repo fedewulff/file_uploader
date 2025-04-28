@@ -4,11 +4,21 @@
   <body>
     <div class="fileContainer">
       <div class="fileData">
-        <div><%= file[0].name %></div>
-        <div><%= file[0].createdAt %></div>
+        <div><%= file.name %></div>
+        <div><%= file.createdAt %></div>
+        <% if(file.resourceType !== "raw") {%>
+        <a href="<%= file.file %>" target="_blank">View file</a>
+        <% } %> <% if(file.resourceType === "raw") {%>
+        <div class="notVisibleFile">
+          <div>View file</div>
+          <div>not possible due to file type</div>
+        </div>
+        <% } %>
+        <a href="/file/<%= file.id %>/download">Download</a>
+        <div><%= file.size %></div>
       </div>
       <form
-        action="/file/<%= file[0].id %>/delete"
+        action="/file/<%= file.id %>/delete"
         method="post"
         style="display: inline"
         class="deleteFileForm"

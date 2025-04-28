@@ -276,6 +276,22 @@ svg {
   align-items: center;
   font-size: 1.5rem;
 }
+.notVisibleFile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #8b8b8b;
+}
+.notVisibleFile div:nth-child(1) {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.notVisibleFile div:nth-child(2) {
+  font-size: 1rem;
+}
+.fileData a {
+  color: #fffff4;
+}
 
 .deleteFileForm {
   border: none;

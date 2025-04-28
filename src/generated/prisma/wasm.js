@@ -134,6 +134,8 @@ exports.Prisma.FileScalarFieldEnum = {
   name: 'name',
   createdAt: 'createdAt',
   file: 'file',
+  size: 'size',
+  resourceType: 'resourceType',
   userId: 'userId',
   folderId: 'folderId'
 };
