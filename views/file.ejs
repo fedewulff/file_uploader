@@ -17,12 +17,7 @@
         <a href="/file/<%= file.id %>/download">Download</a>
         <div><%= file.size %></div>
       </div>
-      <form
-        action="/file/<%= file.id %>/delete"
-        method="post"
-        style="display: inline"
-        class="deleteFileForm"
-      >
+      <form action="/file/<%= file.id %>/delete" method="post" class="deleteFileForm">
         <button type="submit" onclick="return confirm('Delete this file?');">Delete file</button>
       </form>
     </div>

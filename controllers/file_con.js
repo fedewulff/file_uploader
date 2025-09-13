@@ -1,39 +1,35 @@
-const prisma = require("../db/queries");
-const moment = require("moment");
-const cloudinary = require("../middleware/cloudinary");
+const prisma = require("../db/queries")
+const moment = require("moment")
+const cloudinary = require("../middleware/cloudinary")
 
-const request = require("superagent");
+const request = require("superagent")
 
 //GET FILE FORM
 exports.addFileGet = (req, res) => {
   if (!req.user) {
-    res.redirect("/");
+    res.redirect("/")
   }
-  const folderId = req.params.folderId;
-  res.render("add_file", { user: req.user, folderId: folderId || null });
-};
+  const folderId = req.params.folderId
+  res.render("add_file", { user: req.user, folderId: folderId || null })
+}
 
 //POST NEW FILE
 exports.addFilePost = async (req, res) => {
-  console.log(req.body);
-  let todayDate = moment().format("l");
-  const { id } = req.user;
-  console.log(req.file);
-  const uploadResult = await cloudinary.uploader.upload(req.file.path, {
-    public_id: req.file.filename,
+  let todayDate = moment().format("l")
+  const { id } = req.user
+  const uploadResult = await cloudinary.uploader.upload(`data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`, {
     resource_type: "auto",
-  });
-  console.log(uploadResult);
+  })
 
   function getNumberFromFolderId() {
     if (req.params.folderId) {
-      return Number(req.params.folderId);
-    } else return null;
+      return Number(req.params.folderId)
+    } else return null
   }
 
   await prisma.file.create({
     data: {
-      name: req.file.filename,
+      name: req.file.originalname,
       createdAt: todayDate,
       file: uploadResult.url,
       size: req.file.size,
@@ -41,14 +37,14 @@ exports.addFilePost = async (req, res) => {
       userId: id,
       folderId: getNumberFromFolderId(),
     },
-  });
+  })
 
   if (req.params.folderId) {
-    res.redirect(`/folder/${req.params.folderId}`);
-    return;
+    res.redirect(`/folder/${req.params.folderId}`)
+    return
   }
-  res.redirect("/user");
-};
+  res.redirect("/user")
+}
 
 //GET FILE INFO
 exports.fileDataGet = async (req, res) => {
@@ -56,10 +52,9 @@ exports.fileDataGet = async (req, res) => {
     where: {
       id: Number(req.params.fileId),
     },
-  });
-  console.log(file);
-  res.render("file", { file: file });
-};
+  })
+  res.render("file", { file: file })
+}
 
 //DOWNLOAD FILE
 exports.fileDownloadGet = async (req, res) => {
@@ -67,10 +62,10 @@ exports.fileDownloadGet = async (req, res) => {
     where: {
       id: Number(req.params.fileId),
     },
-  });
-  res.set("Content-disposition", "attachment; filename=" + file.name);
-  request(file.file).pipe(res);
-};
+  })
+  res.set("Content-disposition", "attachment; filename=" + file.name)
+  request(file.file).pipe(res)
+}
 
 //DELETE FILE
 exports.deleteFilePost = async (req, res) => {
@@ -78,7 +73,7 @@ exports.deleteFilePost = async (req, res) => {
     where: {
       id: Number(req.params.fileId),
     },
-  });
-  cloudinary.uploader.destroy(deleteFile.name).then((result) => console.log(result));
-  res.redirect("/user");
-};
+  })
+  cloudinary.uploader.destroy(deleteFile.name).then((result) => console.log(result))
+  res.redirect("/user")
+}

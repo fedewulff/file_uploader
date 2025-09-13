@@ -11,16 +11,11 @@ passport.use(
           username: username,
         },
       });
-      console.log("password");
-      console.log(password);
-
       if (!user) {
-        console.log(1);
         return done(null, false, { message: "Username does not exist" });
       }
       const match = await bcrypt.compare(password, user.password);
       if (!match) {
-        console.log(2);
         return done(null, false, { message: "Wrong password" });
       }
       return done(null, user);

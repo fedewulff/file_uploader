@@ -5785,14 +5785,14 @@ export namespace Prisma {
 
   export type FolderWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    name?: string
     AND?: FolderWhereInput | FolderWhereInput[]
     OR?: FolderWhereInput[]
     NOT?: FolderWhereInput | FolderWhereInput[]
+    name?: StringFilter<"Folder"> | string
     userId?: IntFilter<"Folder"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     files?: FileListRelationFilter
-  }, "id" | "name">
+  }, "id">
 
   export type FolderOrderByWithAggregationInput = {
     id?: SortOrder
@@ -5845,10 +5845,10 @@ export namespace Prisma {
 
   export type FileWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    name?: string
     AND?: FileWhereInput | FileWhereInput[]
     OR?: FileWhereInput[]
     NOT?: FileWhereInput | FileWhereInput[]
+    name?: StringFilter<"File"> | string
     createdAt?: StringFilter<"File"> | string
     file?: StringFilter<"File"> | string
     size?: IntFilter<"File"> | number
@@ -5857,7 +5857,7 @@ export namespace Prisma {
     folderId?: IntNullableFilter<"File"> | number | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     folder?: XOR<FolderNullableScalarRelationFilter, FolderWhereInput> | null
-  }, "id" | "name">
+  }, "id">
 
   export type FileOrderByWithAggregationInput = {
     id?: SortOrder
