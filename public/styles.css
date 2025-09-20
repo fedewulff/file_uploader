@@ -10,10 +10,17 @@ body {
   padding: 0 0.5rem;
 }
 /*LOGIN & SIGN-UP*/
+.icon-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 7rem;
+}
+.icon-title svg {
+  height: 6rem;
+}
 .title {
   font-size: 4rem;
   color: #fffff4;
-  margin-bottom: 9rem;
 }
 .loginFormContainer,
 .signupFormContainer {
@@ -152,8 +159,14 @@ input {
   gap: 0.5rem;
   max-width: fit-content;
 }
+.user-filder-sidebar svg {
+  height: 2.5rem;
+  margin: 0;
+  width: fit-content;
+}
 .user-filder-sidebar a,
 .user-filder-sidebar div {
+  fill: #fffff4;
   color: #004225;
   background: #fffff4;
   text-decoration: none;
@@ -210,7 +223,7 @@ input {
   padding: 0.5rem 0.25rem 0.5rem 0;
 }
 svg {
-  fill: white;
+  fill: #fffff4;
   height: 2rem;
   flex-shrink: 0;
   padding: 0;
@@ -298,8 +311,25 @@ s
   background: #ff6600;
 }
 
+svg.go-back {
+  height: 3rem;
+  margin-top: 1rem;
+}
+
 @media (max-width: 600px) {
   /*LOGIN SIGNUP*/
+  .icon-title {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5rem;
+  }
+  .icon-title svg {
+    margin-top: 1rem;
+    height: 4rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
   .loginFormContainer,
   .signupFormContainer {
     width: 100%;
@@ -311,14 +341,14 @@ s
 
   /*USER AND FOLDER*/
   .logout {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
   .user-folder-name {
     font-size: 2.5rem;
     word-break: break-all;
   }
   .deleteUserForm button {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
   .user-folder-content-container {
     flex-direction: column;
@@ -326,8 +356,12 @@ s
   }
   .user-filder-sidebar {
     flex-direction: row;
+    align-items: center;
     height: auto;
     max-width: none;
+  }
+  .user-filder-sidebar svg {
+    height: 2rem;
   }
   .user-filder-sidebar a {
     display: block; /* or inline, or table-cell */

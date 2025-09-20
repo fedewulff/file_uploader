@@ -14,9 +14,14 @@
       </div>
       <div class="user-folder-content-container">
         <div class="user-filder-sidebar">
-          <a href="/user" class="addFolderAndFile">Back</a>
-          <a href="/folder/<%= folderId %>/update" class="addFolderAndFile">Update folder</a>
-          <a href="/add_file/<%= folderId %>" class="addFolderAndFile">Add file</a>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <title>arrow-left</title>
+            <a xlink:href="/user">
+              <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+            </a>
+          </svg>
+          <a href="/folder/<%= folderId %>/update">Update folder</a>
+          <a href="/add_file/<%= folderId %>">Add file</a>
         </div>
 
         <div class="grid">

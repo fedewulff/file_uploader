@@ -181,12 +181,11 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": null
+        "value": "postgresql://fedewulff:986753.Apestosa@localhost:5432/file_uploader"
       }
     }
   },

@@ -2,12 +2,20 @@
 <html lang="en">
   <%- include("./partials/head.ejs",{title:"Add folder"}) %>
   <body>
-    <form action="/add_folder" method="post" class="addFolderForm">
-      <div>
-        <label for="folderName">Folder name:</label>
-        <input type="text" name="folderName" id="folderName" required />
-      </div>
-      <button class="addFolderButton" type="submit">Add folder</button>
-    </form>
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" xmlns:xlink="http://www.w3.org/1999/xlink" class="go-back">
+        <title>arrow-left</title>
+        <a xlink:href="javascript:history.back()">
+          <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+        </a>
+      </svg>
+      <form action="/add_folder" method="post" class="addFolderForm">
+        <div>
+          <label for="folderName">Folder name:</label>
+          <input type="text" name="folderName" id="folderName" maxlength="25" required />
+        </div>
+        <button class="addFolderButton" type="submit">Add folder</button>
+      </form>
+    </div>
   </body>
 </html>
