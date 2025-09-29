@@ -8,12 +8,10 @@ const express = require("express")
 const app = express()
 const mainRoute = require("./routes/main_route")
 const cloudinary = require("cloudinary").v2 /*FOR UPLOADING FILES*/
-var flash = require("connect-flash")
 const cookieParser = require("cookie-parser") /*FOR READING COOKIES*/
 
 const passport = require("passport")
 const expressSession = require("express-session")
-//const flash = require("express-flash");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store")
 
 const prisma = require("./db/queries")
@@ -39,7 +37,6 @@ app.use(
     }),
   })
 )
-app.use(flash())
 
 app.use(cookieParser())
 
