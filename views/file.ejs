@@ -8,6 +8,7 @@
         <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
       </a>
     </svg>
+
     <div class="fileContainer">
       <div class="fileData">
         <div><%= file.name %></div>
@@ -21,7 +22,7 @@
         </div>
         <% } %>
         <a href="/file/<%= file.id %>/download">Download</a>
-        <div><%= file.size %></div>
+        <div><%= (file.size/1000000).toFixed(2) %> MB</div>
       </div>
       <form action="/file/<%= file.id %>/delete" method="post" class="deleteFileForm">
         <button type="submit" onclick="return confirm('Delete this file?');">Delete file</button>

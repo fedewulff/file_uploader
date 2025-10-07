@@ -53,6 +53,7 @@ exports.fileDataGet = async (req, res) => {
       id: Number(req.params.fileId),
     },
   })
+
   res.render("file", { file: file })
 }
 
