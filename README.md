@@ -2,7 +2,7 @@
 
 <p align="center">A back end cloud file uploader project that uses EJS for rendering from <a href="https://www.theodinproject.com/lessons/nodejs-file-uploader">Odin</a></p>
 
-<h3>Demo: <a href="https://teenage-alanah-fede-org-6a2490a6.koyeb.app">File uploader</a></h3>
+<h3>Demo: <a href="https://teenage-alanah-fede-org-6a2490a6.koyeb.app">File uploader</a> (might take a minute or two to deploy)</h3>
 
 ## Built with
 

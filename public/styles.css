@@ -98,9 +98,6 @@ input {
   display: block;
   font-size: 2rem;
 }
-.loginButton:hover {
-  color: #ff6600;
-}
 
 /*USER AND FOLDER*/
 .user-folder-containers {
@@ -120,9 +117,7 @@ input {
   white-space: nowrap;
   font-size: 1.5rem;
 }
-.logout:hover {
-  color: #ff6600;
-}
+
 .logout-delete {
   display: flex;
   justify-content: space-between;
@@ -210,9 +205,7 @@ input {
   border: 0.125rem solid #fffff4;
   width: fit-content;
 }
-.gridBlock:hover {
-  background: #ff6600;
-}
+
 .folder {
   padding: 0 0.25rem;
 }
@@ -302,13 +295,6 @@ s
   color: #004225;
   cursor: pointer;
   margin: auto;
-}
-
-.user-filder-sidebar a:hover,
-.user-filder-sidebar div:hover,
-.signupButton:hover,
-.signUpHomeButton:hover {
-  background: #ff6600;
 }
 
 svg.go-back {
@@ -409,5 +395,41 @@ svg.go-back {
   input {
     font-size: 1.25rem;
     width: 100%;
+  }
+}
+
+@media (hover: hover) {
+  .loginButton:hover,
+  .signupButton:hover {
+    color: #ff6600;
+  }
+  .logout:hover {
+    color: #ff6600;
+  }
+  .gridBlock:hover {
+    background: #ff6600;
+  }
+  .user-filder-sidebar a:hover,
+  .user-filder-sidebar div:hover,
+  .signUpHomeButton:hover {
+    background: #ff6600;
+  }
+}
+
+@media (hover: none) {
+  .loginButton:active,
+  .signupButton:active {
+    color: #ff6600;
+  }
+  .logout:active {
+    color: #ff6600;
+  }
+  .gridBlock:active {
+    background: #ff6600;
+  }
+  .user-filder-sidebar a:active,
+  .user-filder-sidebar div:active,
+  .signUpHomeButton:active {
+    background: #ff6600;
   }
 }
