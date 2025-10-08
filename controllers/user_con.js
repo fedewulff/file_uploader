@@ -28,7 +28,7 @@ exports.deleteUserPost = async (req, res) => {
     },
   })
   for (let i = 0; i < userFiles.length; i++) {
-    cloudinary.uploader.destroy(userFiles[i].name).then((result) => console.log(result))
+    cloudinary.uploader.destroy(userFiles[i].name)
   }
   await prisma.user.delete({
     where: {

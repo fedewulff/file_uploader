@@ -75,6 +75,6 @@ exports.deleteFilePost = async (req, res) => {
       id: Number(req.params.fileId),
     },
   })
-  cloudinary.uploader.destroy(deleteFile.name).then((result) => console.log(result))
+  cloudinary.uploader.destroy(deleteFile.name)
   res.redirect("/user")
 }
